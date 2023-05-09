@@ -1,12 +1,17 @@
-FROM node:16
+FROM node:20 as build-env
 
 WORKDIR /app
 
 COPY package*.json /app/
-RUN npm install --omit=dev
+RUN npm ci --omit=dev
 
 COPY . /app
 
+FROM gcr.io/distroless/nodejs20-debian11
+
+COPY --from=build-env /app /app
+
+WORKDIR /app
 EXPOSE 3000
 
-ENTRYPOINT ["node", "server.js"]
+CMD ["server.js"]
