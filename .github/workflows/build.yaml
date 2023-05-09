@@ -49,7 +49,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
       - name: Push Image
         run: |
-          docker push . --tag bashofmann/nodejs-demo-app:${{steps.version.outputs.version}}
+          docker push bashofmann/nodejs-demo-app:${{steps.version.outputs.version}}
       - name: Bump helm chart
         run: |
           sed -i 's/^appVersion: .*/appVersion: ${{steps.version.outputs.version}}/' chart/Chart.yaml
