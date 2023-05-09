@@ -5,4 +5,4 @@ helm:
   chart: "."
   values:
     service:
-      type: Nodeport
+      type: NodePort
