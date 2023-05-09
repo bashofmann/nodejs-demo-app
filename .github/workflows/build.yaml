@@ -13,6 +13,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GHTOKEN }}
       - name: "Get version from package.json"
         id: version
         run: |
