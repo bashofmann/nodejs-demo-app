@@ -4,7 +4,5 @@ helm:
   releaseName: nodejs-demo-app
   chart: "."
   values:
-    ingress:
-      enabled: true
-      hosts:
-        - host: sslip.io
+    service:
+      type: Nodeport
